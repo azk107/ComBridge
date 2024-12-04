@@ -1,0 +1,30 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/auth-api', '.']
+    
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/auth-api']
+    
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'auth-api'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/auth-api'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'DB_HOST=${_DB_HOST},DB_USER=${_DB_USER},DB_NAME=${_DB_NAME},JWT_SECRET=${_JWT_SECRET}'
+      - '--set-secrets'
+      - 'DB_PASSWORD=DB_PASSWORD:latest'
+
+images:
+  - 'gcr.io/$PROJECT_ID/auth-api'
