@@ -1,6 +1,19 @@
-node_modules
-npm-debug.log
-.env
+# Version control
 .git
 .gitignore
-README.md
+
+# Dependencies
+node_modules
+npm-debug.log
+
+
+# Development
+*.md
+.vscode
+.idea
+*.test.js
+jest.config.js
+
+# OS generated
+.DS_Store
+Thumbs.db
