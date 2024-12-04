@@ -1,9 +1,0 @@
-.git
-.gitignore
-node_modules/
-.env
-.env.example
-README.md
-*.md
-*.sh
-.gcloudignore
