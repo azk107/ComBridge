@@ -2,5 +2,4 @@ node_modules
 .env
 .env.example
 package-lock.json
-package.json
-setup-permissions.sh
+setup-permission.sh
