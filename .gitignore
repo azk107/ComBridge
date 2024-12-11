@@ -1,1 +1,5 @@
-node_modules
+/node_modules
+/database
+.env
+package-lock.json
+setup-permission.sh
