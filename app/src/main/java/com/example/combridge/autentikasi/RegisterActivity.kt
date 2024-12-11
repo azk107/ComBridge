@@ -79,19 +79,14 @@ class RegisterActivity : AppCompatActivity() {
                     // Log response dari API
                     Log.d("RegisterActivity", "Register API Response: ${response.message}")
 
-
-                    if (response.error == false) {
-                        AlertDialog.Builder(this@RegisterActivity).apply {
-                            setTitle("Success")
-                            setMessage(response.message ?: "Registration successful!")
-                            setPositiveButton("OK") { _, _ ->
+                    AlertDialog.Builder(this@RegisterActivity).apply {
+                        setTitle("Success")
+                        setMessage(response.message ?: "Registration successful!")
+                        setPositiveButton("OK") { _, _ ->
                                 // Navigasi ke halaman login
-                                navigateToLogin()
-                            }
-                            create().show()
+                            navigateToLogin()
                         }
-                    } else {
-                        showToast("Registration failed: ${response.message}")
+                        create().show()
                     }
                 } catch (e: Exception) {
                     Log.e("RegisterActivity", "Registration failed: ${e.message}")
@@ -121,9 +116,6 @@ class RegisterActivity : AppCompatActivity() {
             navigateToBack()
         }
     }
-
-
-
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

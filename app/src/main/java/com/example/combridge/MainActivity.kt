@@ -10,8 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.combridge.beranda.BerandaFragment
-import com.example.combridge.beranda.KataFragment
-import com.example.combridge.kamera.KameraFragment
 import com.example.combridge.pengaturan.PengaturanFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -30,8 +28,6 @@ class MainActivity : AppCompatActivity() {
             val selectedFragment: Fragment = when (item.itemId) {
                 R.id.nav_beranda -> BerandaFragment()
 //                R.id.nav_kamera -> KameraFragment()
-//                R.id.nav_kata -> KataFragment()
-
                 R.id.nav_pengaturan -> PengaturanFragment()
                 else -> BerandaFragment()
 

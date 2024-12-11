@@ -24,7 +24,7 @@
             android:text="Combridge"
             android:textSize="20sp"
             android:textColor="#000000"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/poppins_medium"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:textStyle="bold"/>
@@ -46,7 +46,8 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"/>
         </LinearLayout>
     </LinearLayout>
 

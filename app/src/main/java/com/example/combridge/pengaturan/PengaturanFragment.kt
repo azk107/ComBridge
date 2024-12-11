@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
-import com.example.combridge.R
-import com.example.combridge.autentikasi.LoginActivity
 import com.example.combridge.auth.UserPreference
 import com.example.combridge.auth.dataStore
 import com.example.combridge.databinding.FragmentPengaturanBinding
@@ -19,14 +18,17 @@ import kotlinx.coroutines.launch
 class PengaturanFragment : Fragment() {
 
     private lateinit var logoutButton: LinearLayout
+    private lateinit var aboutButton: LinearLayout // Tambahkan referensi untuk tombol "About"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentPengaturanBinding.inflate(inflater, container, false)
 
-        // Menemukan tombol logout dari layout
+        // Menemukan tombol Logout dan About dari layout
         logoutButton = binding.logoutButton
+        aboutButton = binding.aboutButton // Inisialisasi tombol "About" menggunakan binding
 
         // Menambahkan listener untuk tombol Logout
         logoutButton.setOnClickListener {
@@ -34,15 +36,33 @@ class PengaturanFragment : Fragment() {
             logout()
         }
 
+        // Menambahkan listener untuk tombol About
+        aboutButton.setOnClickListener {
+            navigateToAboutPage()
+        }
+
         return binding.root
     }
 
     private fun logout() {
-        // Menghapus data pengguna yang disimpan, misalnya SharedPreferences atau UserPreference
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Konfirmasi Logout")
+            setMessage("Apakah Anda yakin ingin logout?")
+            setPositiveButton("Ya") { _, _ ->
+                performLogout()
+            }
+            setNegativeButton("Batal") { dialog, _ ->
+                dialog.dismiss()
+            }
+            create()
+            show()
+        }
+    }
+
+    private fun performLogout() {
         val userPreference = UserPreference.getInstance(requireContext().dataStore)
         lifecycleScope.launch {
-            // Menyimpan nilai login sebagai false atau menghapus data lain yang terkait
-            userPreference.clearUserData() // Sesuaikan dengan metode yang Anda gunakan untuk clear data
+            userPreference.clearUserData() // Menghapus data pengguna
         }
 
         // Menavigasi ke halaman login setelah logout
@@ -51,4 +71,9 @@ class PengaturanFragment : Fragment() {
         requireActivity().finish() // Menutup halaman Pengaturan agar tidak bisa kembali
     }
 
+    private fun navigateToAboutPage() {
+        // Intent untuk berpindah ke halaman About
+        val intent = Intent(requireActivity(), AboutActivity::class.java)
+        startActivity(intent)
+    }
 }

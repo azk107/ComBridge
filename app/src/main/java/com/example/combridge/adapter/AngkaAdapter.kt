@@ -7,7 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.combridge.R
 
-class AngkaAdapter(private val angkaList: List<String>) : RecyclerView.Adapter<AngkaAdapter.AngkaViewHolder>() {
+class AngkaAdapter(
+    private val angkaList: List<String>
+) : RecyclerView.Adapter<AngkaAdapter.AngkaViewHolder>() {
+
+    private var listener: ((String) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        this.listener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AngkaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_angka, parent, false)
@@ -16,18 +24,19 @@ class AngkaAdapter(private val angkaList: List<String>) : RecyclerView.Adapter<A
 
     override fun onBindViewHolder(holder: AngkaViewHolder, position: Int) {
         val angka = angkaList[position]
-        holder.bind(angka)
+        holder.bind(angka, listener)
     }
 
     override fun getItemCount(): Int = angkaList.size
 
     class AngkaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvAngka: TextView = itemView.findViewById(R.id.tv_angka)
-        private val tvKeterangan: TextView = itemView.findViewById(R.id.tv_keterangan)
 
-        fun bind(angka: String) {
+        fun bind(angka: String, listener: ((String) -> Unit)?) {
             tvAngka.text = angka
-            tvKeterangan.text = "Angka $angka"
+            itemView.setOnClickListener {
+                listener?.invoke(angka)
+            }
         }
     }
 }

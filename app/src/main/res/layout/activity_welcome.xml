@@ -32,7 +32,7 @@
             android:text="Combridge"
             android:textSize="20sp"
             android:textColor="#000000"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/poppins_medium"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:textStyle="bold"/>
@@ -71,9 +71,10 @@
                     android:id="@+id/tv_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Back"
+                    android:text="Kembali"
                     android:textColor="#000000"
                     android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_gravity="start"/>
             </LinearLayout>
 
@@ -106,7 +107,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Welcome To ComBridge"
+                android:text="Selamat Datang di ComBridge"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -118,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="#BDE0FE"
-                android:text="Sign In"
+                android:text="Masuk"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="#000000" />
 
             <!-- Tombol Sign Up -->
@@ -128,7 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#BDE0FE"
-                android:text="Sign Up"
+                android:text="Daftar"
+                android:fontFamily="@font/poppins_medium"
                 android:textColor="@android:color/black" />
 
             <!-- Catatan Kebijakan -->
@@ -140,6 +144,7 @@
                 android:gravity="center"
                 android:text="Dengan masuk atau mendaftar, anda menyetujui ketentuan layanan dan kebijakan privasi"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/poppins_medium"
                 android:textSize="12sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

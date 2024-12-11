@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ComBridge"
         tools:targetApi="31">
         <activity
+            android:name=".pengaturan.AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".beranda.ImageDisplayActivity"
             android:exported="false" />
         <activity
