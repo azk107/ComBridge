@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -43,10 +45,14 @@
             android:exported="false" />
         <activity
             android:name=".beranda.BerandaFragment"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".kamera.CameraActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

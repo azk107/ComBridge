@@ -10,6 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.combridge.beranda.BerandaFragment
+import com.example.combridge.beranda.KataFragment
+import com.example.combridge.kamera.CameraActivity
+import com.example.combridge.kamera.KameraFragment
 import com.example.combridge.pengaturan.PengaturanFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,15 +28,21 @@ class MainActivity : AppCompatActivity() {
         // Bottom Navigation Setup
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setOnItemSelectedListener { item ->
-            val selectedFragment: Fragment = when (item.itemId) {
-                R.id.nav_beranda -> BerandaFragment()
-//                R.id.nav_kamera -> KameraFragment()
-                R.id.nav_pengaturan -> PengaturanFragment()
-                else -> BerandaFragment()
-
+            when (item.itemId) {
+                R.id.nav_beranda -> {
+                    loadFragment(BerandaFragment())
+                    true
+                }
+                R.id.nav_kamera -> {
+                    loadFragment(KameraFragment()) // Load CameraFragment
+                    true
+                }
+                R.id.nav_pengaturan -> {
+                    loadFragment(PengaturanFragment()) // Load PengaturanFragment
+                    true
+                }
+                else -> false
             }
-            loadFragment(selectedFragment)
-            true
         }
     }
 

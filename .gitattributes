@@ -1,0 +1,1 @@
+app/src/main/ml/mobilenetv2-bisindo-mode-v2.tflite filter=lfs diff=lfs merge=lfs -text
