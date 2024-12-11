@@ -1,7 +1,7 @@
 # ComBridge - “Connecting Communities Through Sign Language”
 
 Introducing ComBridge, your bridge to seamless communication and accessibility for individuals with hearing impairments. 
-## Combridge Team
+## ComBridge Team
 Team ID: C242-PS417
 
 Team Member :
