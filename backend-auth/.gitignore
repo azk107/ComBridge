@@ -2,4 +2,4 @@
 /database
 .env
 package-lock.json
-setup-permission.sh
+setup-permissions.sh
