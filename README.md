@@ -40,7 +40,7 @@ We will build the backend using Express.js framework that provides REST API auth
 You can see our application demo [here](link youtube)
 
 ### Presentation
-ou can watch our team's presentation video and slide [here](link youtube)
+You can watch our team's presentation video and slide [here](link youtube)
 
 ## Repository
 Access our project's code, data, and documentation through this link:
