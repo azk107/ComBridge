@@ -33,7 +33,8 @@
             android:text="Silahkan Sesuaikan Object"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_medium"/>
 
         <!-- Placeholder -->
         <View
@@ -58,7 +59,8 @@
             android:backgroundTint="#2196F3"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"/>
 
         <Button
             android:id="@+id/btnAlbum"
@@ -70,7 +72,8 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:textSize="14sp"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_medium"/>
     </LinearLayout>
 
     <!-- Area Kamera -->
@@ -97,7 +100,8 @@
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_medium"/>
 
         <TextView
             android:id="@+id/tvResult"
@@ -105,7 +109,8 @@
             android:layout_height="wrap_content"
             android:text="Hasil"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_medium"/>
 
         <TextView
             android:id="@+id/tvInferenceTime"
