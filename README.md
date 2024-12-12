@@ -1,4 +1,4 @@
-# ComBridge - “Connecting Communities Through Sign Language”
+# ComBridge - Connecting Communities Through Sign Language
 ![](https://github.com/azk107/ComBridge/blob/main/Combridge%20Presentation%20Slides.png)
 
 Introducing ComBridge, your bridge to seamless communication and accessibility for individuals with hearing impairments. 
@@ -35,7 +35,7 @@ We will build the backend using Express.js framework that provides REST API auth
 ## Documentation
 
 ### Screenshoot
-(link screenshoot)
+![](https://github.com/azk107/ComBridge/blob/main/Screenshoot.png)
 
 ### Demo Video
 You can see our application demo [here](link youtube)
