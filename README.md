@@ -1,5 +1,6 @@
 # Model Analysis for Indonesian Sign Language (BISINDO) Detection Application Based on Computer Vision to Improve Inclusive Communication
-![]()
+![](https://github.com/azk107/ComBridge/blob/ML/Train%20Accuracy%201.jpeg)
+![](https://github.com/azk107/ComBridge/blob/ML/Train%20Accuracy%202.jpeg)
 
 ### Accuracy:
 - **Train Accuracy**: 0.9955
