@@ -1,29 +1,25 @@
-FROM python:3.9-slim
+# Contoh Dockerfile
+FROM python:3.10-slim
 
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libjpeg-dev \
+    zlib1g-dev \
+ && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project configuration
-COPY pyproject.toml .
+# Copy project files
+COPY . .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir .
-
-# Copy application code and model
-COPY src/ src/
-COPY wsgi.py .
-
-# Set environment variables
-ENV MODEL_PATH=model.tflite
-ENV PORT=8080
-ENV PYTHONPATH=/app
-
-# Expose port
+# Expose the application port
 EXPOSE 8080
 
-# Run the application with Gunicorn
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 wsgi:app
+# Command to run the application
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "wsgi:app"]

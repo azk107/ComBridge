@@ -43,25 +43,6 @@ gcloud run deploy tflite-api \
   --allow-unauthenticated
 ```
 
-## API Endpoints
-
-### POST /predict
-Make predictions using the model.
-
-Request body:
-```json
-{
-    "input": [1.0, 2.0, 3.0, ...]
-}
-```
-
-Response:
-```json
-{
-    "prediction": [[0.1, 0.2, ...]],
-    "shape": [1, 10]
-}
-```
 
 ### GET /health
 Check service health.
