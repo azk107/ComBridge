@@ -1,4 +1,5 @@
 # ComBridge - “Connecting Communities Through Sign Language”
+![](https://github.com/azk107/ComBridge/blob/main/Combridge%20Presentation%20Slides.png)
 
 Introducing ComBridge, your bridge to seamless communication and accessibility for individuals with hearing impairments. 
 ## ComBridge Team
