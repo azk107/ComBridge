@@ -17,12 +17,19 @@ class KameraFragment : Fragment(R.layout.fragment_kamera) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         // Tombol untuk membuka CameraActivity
         val btnKamera = view.findViewById<Button>(R.id.btnKamera)
         btnKamera.setOnClickListener {
             // Navigasi ke CameraActivity
             val intent = Intent(requireActivity(), CameraActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Tombol untuk membuka BangunKataActivity
+        val btnWhitepaper = view.findViewById<Button>(R.id.BangunKata)
+        btnWhitepaper.setOnClickListener {
+            // Navigasi ke BangunKataActivity
+            val intent = Intent(requireActivity(), BangunKataActivity::class.java)
             startActivity(intent)
         }
     }

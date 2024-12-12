@@ -11,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.combridge.beranda.BerandaFragment
 import com.example.combridge.beranda.KataFragment
-import com.example.combridge.kamera.CameraActivity
 import com.example.combridge.kamera.KameraFragment
 import com.example.combridge.pengaturan.PengaturanFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView

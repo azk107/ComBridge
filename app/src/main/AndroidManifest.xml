@@ -19,7 +19,7 @@
         android:theme="@style/Theme.ComBridge"
         tools:targetApi="31">
         <activity
-            android:name=".kamera.ResultGaleriActivity"
+            android:name=".kamera.BangunKataActivity"
             android:exported="false" />
         <activity
             android:name=".pengaturan.AboutActivity"
