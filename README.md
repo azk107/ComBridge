@@ -38,10 +38,10 @@ We will build the backend using Express.js framework that provides REST API auth
 ![](https://github.com/azk107/ComBridge/blob/main/Screenshoot.png)
 
 ### Demo Video
-You can see our application demo [here](link youtube)
+You can see our application demo [here](https://drive.google.com/file/d/1yE7cP-GVcGDdDaWsFe_zjDRRJqFlZ_76/view?usp=drive_link)
 
 ### Presentation
-You can watch our team's presentation video and slide [here](link youtube)
+You can watch our team's presentation video and slide [here](https://youtu.be/_K_aPI2N5CI)
 
 ### Provided Downloadable APK 
 You can download the application of ComBridge here [here](https://drive.google.com/drive/folders/1qCJrXjdG6YkdEyjqOl_eNkA2GkT83WyA?usp=sharing)
