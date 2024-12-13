@@ -26,19 +26,17 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private lateinit var imageClassifierHelper: ImageClassifierHelper
-    private var cameraProvider: ProcessCameraProvider? = null // Tambahkan properti ini
+    private var cameraProvider: ProcessCameraProvider? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol close
-        binding.btnClose.setOnClickListener {
-            onBackPressed() // Menutup activity
+        binding.Keluar.setOnClickListener {
+            onBackPressed()
         }
 
-        // Mulai kamera
         startCamera()
     }
 
@@ -49,12 +47,10 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        // Unbind kamera ketika Activity ini tidak aktif
         cameraProvider?.unbindAll()
     }
 
     private fun startCamera() {
-        // Pastikan izin kamera sudah diberikan
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 0)
         } else {
@@ -75,11 +71,11 @@ class CameraActivity : AppCompatActivity() {
                                     val displayResult = sortedCategories.joinToString("\n") {
                                         "${it.label} " + NumberFormat.getPercentInstance().format(it.score).trim()
                                     }
-                                    binding.tvResult.text = displayResult
-                                    binding.tvInferenceTime.text = "$inferenceTime ms"
+                                    binding.Prediksii.text = displayResult
+                                    binding.tvPrediksi.text = "$inferenceTime ms"
                                 } else {
-                                    binding.tvResult.text = ""
-                                    binding.tvInferenceTime.text = ""
+                                    binding.Prediksii.text = ""
+                                    binding.tvPrediksi.text = ""
                                 }
                             }
                         }
@@ -97,7 +93,7 @@ class CameraActivity : AppCompatActivity() {
 
                 val imageAnalyzer = ImageAnalysis.Builder()
                     .setResolutionSelector(resolutionSelector)
-                    .setTargetRotation(binding.viewFinder.display.rotation)
+                    .setTargetRotation(binding.Camera1.display.rotation)
                     .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                     .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                     .build()
@@ -107,7 +103,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 val preview = Preview.Builder().build()
-                    .also { it.setSurfaceProvider(binding.viewFinder.surfaceProvider) }
+                    .also { it.setSurfaceProvider(binding.Camera1.surfaceProvider) }
 
                 try {
                     cameraProvider?.unbindAll() // Pastikan hanya satu kamera yang aktif

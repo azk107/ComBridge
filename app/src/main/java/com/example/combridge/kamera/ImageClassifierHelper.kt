@@ -36,7 +36,7 @@ class ImageClassifierHelper(
             .setMaxResults(maxResults)
 
         val baseOptionsBuilder = BaseOptions.builder()
-            .setNumThreads(4)  // Set the number of threads for inference
+            .setNumThreads(4)
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
 
         try {

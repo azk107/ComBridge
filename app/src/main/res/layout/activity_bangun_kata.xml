@@ -1,113 +1,127 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#64B5F6"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical">
 
-        <!-- Tombol Close -->
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Close"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_medium"/>
-
-        <!-- Judul -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Silahkan Bangun Kata Anda !"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_medium"/>
-
-        <!-- Placeholder -->
-        <View
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
-    </LinearLayout>
-
-    <!-- Area Kamera -->
-    <androidx.camera.view.PreviewView
-        android:id="@+id/viewFinder2"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:background="@android:color/black" />
-
-    <!-- Hasil Prediksi -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        android:padding="2dp"
-        android:elevation="2dp">
-
-        <TextView
-            android:id="@+id/tvResultLabel"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hasil"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:fontFamily="@font/poppins_medium"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="8dp">
 
-        <TextView
-            android:id="@+id/tvResult"
+            <ImageView
+                android:id="@+id/btnKeluar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Close"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Silahkan Bangun Kata Anda !"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp" />
+        </LinearLayout>
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/Camera2"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
-            android:text="Hasil"
-            android:padding="4dp"
-            android:textSize="14sp"
-            android:gravity="end"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/poppins_medium"/>
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="2dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/Kata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <TextView
+                android:id="@+id/Prediksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="Prediksi"
+                android:padding="4dp"
+                android:textSize="14sp"
+                android:gravity="end"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/poppins_medium"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="0dp">
+
+            <Button
+                android:id="@+id/SimpanKata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simpan Kata"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#1CB429"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <Button
+                android:id="@+id/HapusKata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hapus Kata"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:fontFamily="@font/poppins_medium"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="0dp">
+            <Button
+                android:id="@+id/EjaKata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eja Kata"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins_medium"/>
+        </LinearLayout>
 
     </LinearLayout>
-
-    <!-- Tombol Aksi -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="16dp">
-
-        <Button
-            android:id="@+id/btnSaveWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Simpan Kata"
-            android:textColor="@android:color/white"
-            android:backgroundTint="#1CB429"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_medium"/>
-
-        <Button
-            android:id="@+id/btnClearAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hapus Semua"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:fontFamily="@font/poppins_medium"/>
-    </LinearLayout>
-</LinearLayout>
+</ScrollView>

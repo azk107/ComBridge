@@ -1,14 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#64B5F6"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,16 +15,14 @@
         android:paddingBottom="16dp"
         android:layout_marginBottom="8dp">
 
-        <!-- Tombol Close -->
         <ImageView
-            android:id="@+id/btnClose"
+            android:id="@+id/Keluar"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:contentDescription="Close"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:layout_marginEnd="16dp" />
 
-        <!-- Judul -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,20 +33,17 @@
             android:textStyle="bold"
             android:fontFamily="@font/poppins_medium"/>
 
-        <!-- Placeholder -->
         <View
             android:layout_width="24dp"
             android:layout_height="24dp" />
     </LinearLayout>
 
-    <!-- Area Kamera -->
     <androidx.camera.view.PreviewView
-        android:id="@+id/viewFinder"
+        android:id="@+id/Camera1"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@android:color/black" />
 
-    <!-- Hasil Prediksi -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +53,7 @@
         android:elevation="2dp">
 
         <TextView
-            android:id="@+id/tvTitleResult"
+            android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasil Prediksi :"
@@ -71,7 +64,7 @@
             android:fontFamily="@font/poppins_medium"/>
 
         <TextView
-            android:id="@+id/tvResult"
+            android:id="@+id/Prediksii"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasil"
@@ -80,7 +73,7 @@
             android:fontFamily="@font/poppins_medium"/>
 
         <TextView
-            android:id="@+id/tvInferenceTime"
+            android:id="@+id/tvPrediksi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"

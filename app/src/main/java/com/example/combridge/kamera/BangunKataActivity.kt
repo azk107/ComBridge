@@ -1,12 +1,10 @@
 package com.example.combridge.kamera
 
 import android.Manifest
-import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -20,58 +18,73 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.combridge.databinding.ActivityBangunKataBinding
-import com.example.combridge.kamera.CameraActivity.Companion
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.text.NumberFormat
-import java.util.concurrent.Executors
+import java.util.Locale
+import android.speech.tts.TextToSpeech
 
 class BangunKataActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBangunKataBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private lateinit var bangunKataHelper : BangunKataHelper
     private val wordBuilder = StringBuilder()
-    private var detectedLetter: String? = null // Menyimpan huruf yang terdeteksi
+    private var detectedLetter: String? = null
+    private lateinit var textToSpeech: TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBangunKataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol close
-        binding.btnClose.setOnClickListener {
+        textToSpeech = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                textToSpeech.language = Locale.getDefault()
+            } else {
+                Toast.makeText(this, "Text-to-Speech tidak tersedia.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.btnKeluar.setOnClickListener {
             onBackPressed()
         }
 
-        binding.btnSaveWord.setOnClickListener {
+        binding.EjaKata.setOnClickListener {
+            val textToRead = wordBuilder.toString()
+            if (textToRead.isNotEmpty()) {
+                textToSpeech.speak(textToRead, TextToSpeech.QUEUE_FLUSH, null, null)
+            } else {
+                Toast.makeText(this, "Tidak ada kata untuk dibaca.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.SimpanKata.setOnClickListener {
             detectedLetter?.let { letter ->
-                wordBuilder.append(letter) // Menambahkan huruf yang terdeteksi
+                wordBuilder.append(letter)
                 Toast.makeText(this, "Kata disimpan: ${wordBuilder.toString()}", Toast.LENGTH_SHORT).show()
-
-                // Update tampilan hasil di tvResult dan tvResultLabel
-                binding.tvResult.text = wordBuilder.toString() // Update tvResult dengan kata yang sudah disusun
-                binding.tvResultLabel.text = "Hasil: ${wordBuilder.toString()}" // Update tvResultLabel dengan hasil yang sama
-
-                detectedLetter = null  // Reset setelah disimpan
-
-                // Pastikan pembaruan tampilan dilakukan di UI thread
-                runOnUiThread {
-                    binding.tvResultLabel.text = "Hasil: ${wordBuilder.toString()}"
-                }
+                binding.Prediksi.text = wordBuilder.toString()
+                binding.Kata.text = "Hasil: ${wordBuilder.toString()}"
+                detectedLetter = null
             } ?: run {
                 Toast.makeText(this, "Tidak ada huruf untuk disimpan.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Tombol hapus semua
-        binding.btnClearAll.setOnClickListener {
-            wordBuilder.clear()  // Menghapus seluruh daftar kata
-            binding.tvResult.text = ""  // Perbarui UI untuk daftar kata
-            binding.tvResultLabel.text = "Hasil: "  // Reset label hasil
+        binding.HapusKata.setOnClickListener {
+            wordBuilder.clear()
+            binding.Prediksi.text = ""
+            binding.Kata.text = "Hasil: "
             Toast.makeText(this, "Semua kata telah dihapus.", Toast.LENGTH_SHORT).show()
         }
 
-        // Mulai kamera
         startCamera()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::textToSpeech.isInitialized) {
+            textToSpeech.stop()
+            textToSpeech.shutdown()
+        }
     }
 
     public override fun onResume() {
@@ -103,9 +116,9 @@ class BangunKataActivity : AppCompatActivity() {
                                     val displayResult = sortedCategories.joinToString("\n") {
                                         "${it.label} " + NumberFormat.getPercentInstance().format(it.score).trim()
                                     }
-                                    binding.tvResult.text = displayResult
+                                    binding.Prediksi.text = displayResult
                                 } else {
-                                    binding.tvResult.text = ""
+                                    binding.Prediksi.text = ""
                                 }
                             }
                         }
@@ -113,7 +126,7 @@ class BangunKataActivity : AppCompatActivity() {
                 }
             )
 
-            bangunKataHelper.setTextViews(binding.tvResult, binding.btnSaveWord)  // Set TextViews untuk hasil
+            bangunKataHelper.setTextViews(binding.Prediksi, binding.SimpanKata)
 
             val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
             cameraProviderFuture.addListener({
@@ -125,19 +138,19 @@ class BangunKataActivity : AppCompatActivity() {
 
                 val imageAnalyzer = ImageAnalysis.Builder()
                     .setResolutionSelector(resolutionSelector)
-                    .setTargetRotation(binding.viewFinder2.display.rotation)
+                    .setTargetRotation(binding.Camera2.display.rotation)
                     .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                     .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
                     .build()
                 val preview = Preview.Builder().build()
-                    .also { it.setSurfaceProvider(binding.viewFinder2.surfaceProvider) }
+                    .also { it.setSurfaceProvider(binding.Camera2.surfaceProvider) }
 
                 imageAnalyzer.setAnalyzer(ContextCompat.getMainExecutor(this), ImageAnalysis.Analyzer { imageProxy ->
                     bangunKataHelper.classifyImage(imageProxy)
                 })
 
                 try {
-                    cameraProvider?.unbindAll() // Pastikan hanya satu kamera yang aktif
+                    cameraProvider?.unbindAll()
                     cameraProvider?.bindToLifecycle(
                         this,
                         cameraSelector,
@@ -169,7 +182,6 @@ class BangunKataActivity : AppCompatActivity() {
     }
     supportActionBar?.hide()
 }
-
 companion object {
     private const val TAG = "CameraActivity"
 }

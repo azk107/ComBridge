@@ -27,10 +27,10 @@ class BangunKataHelper(
     val classifierListener: ClassifierListener?
 ) {
     private var imageClassifier: ImageClassifier? = null
-    private var lastResult: String = ""  // Untuk menyimpan hasil sebelumnya
+    private var lastResult: String = ""
     private val wordBuilder: StringBuilder = StringBuilder()
-    private lateinit var tvResult: TextView  // Tambahkan properti ini untuk tvResult
-    private lateinit var tvInferenceTime: TextView  // Tambahkan properti ini untuk tvInferenceTime
+    private lateinit var tvResult: TextView
+    private lateinit var tvInferenceTime: TextView
 
     init {
         setupImageClassifier()
@@ -47,7 +47,7 @@ class BangunKataHelper(
             .setMaxResults(maxResults)
 
         val baseOptionsBuilder = BaseOptions.builder()
-            .setNumThreads(4)  // Set the number of threads for inference
+            .setNumThreads(4)
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
 
         try {
@@ -103,35 +103,28 @@ class BangunKataHelper(
         return bitmapBuffer
     }
 
-    // Fungsi untuk memperbarui tampilan hasil klasifikasi
     fun updateResults(
         results: List<Classifications>?,
         inferenceTime: Long
     ) {
-        // Menggunakan UI Thread untuk memastikan update tampilan dilakukan di thread utama
         results?.let {
             if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
                 val topResult = it[0].categories.maxByOrNull { it.score }?.label ?: ""
 
-                // Simpan hasil klasifikasi sementara tanpa menambahkannya ke wordBuilder
                 if (topResult.isNotEmpty() && topResult != lastResult) {
-                    lastResult = topResult // Perbarui hasil terakhir yang terdeteksi
-                    // Update tampilan sementara (tanpa menambahkan ke wordBuilder)
+                    lastResult = topResult
                     tvResult.text = topResult
                 }
-
                 val displayResult = it[0].categories.joinToString("\n") {
                     "${it.label} " + NumberFormat.getPercentInstance().format(it.score).trim()
                 }
-                tvInferenceTime.text = "$inferenceTime ms"  // Tampilkan waktu inferensi
+                tvInferenceTime.text = "$inferenceTime ms"
             } else {
                 tvResult.text = ""
                 tvInferenceTime.text = ""
             }
         }
     }
-
-
     interface ClassifierListener {
         fun onError(error: String)
         fun onResults(
@@ -139,7 +132,6 @@ class BangunKataHelper(
             inferenceTime: Long
         )
     }
-
     companion object {
         private const val TAG = "BangunActivityHelper"
     }
