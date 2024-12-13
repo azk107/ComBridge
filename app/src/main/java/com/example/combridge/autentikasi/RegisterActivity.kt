@@ -8,18 +8,14 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.combridge.R
 import com.example.combridge.api.RetrofitClient
 import com.example.combridge.auth.UserPreference
 import com.example.combridge.auth.UserRepository
 import com.example.combridge.auth.dataStore
-import com.example.combridge.beranda.BerandaFragment
 import com.example.combridge.databinding.ActivityRegisterBinding
 import com.example.combridge.welcome.WelcomeActivity
 import kotlinx.coroutines.launch
@@ -30,10 +26,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menggunakan View Binding
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         setupView()
         setupAction()
@@ -59,10 +53,8 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding.edRegisterPassword.text.toString()
             val username = binding.edRegisterUsername.text.toString()
 
-            Log.d("RegisterActivity", "Registering user with Name: $username, Email: $email, Password: $password")
-
             if (password.length < 8) {
-                binding.passwordEditTextLayout.error = getString(R.string.password_too_short)
+                binding.passwordEditTextLayout.error =
                 return@setOnClickListener
             } else {
                 binding.passwordEditTextLayout.error = null
@@ -76,20 +68,16 @@ class RegisterActivity : AppCompatActivity() {
                         RetrofitClient.apiService
                     ).register(username, email, password)
 
-                    // Log response dari API
-                    Log.d("RegisterActivity", "Register API Response: ${response.message}")
-
                     AlertDialog.Builder(this@RegisterActivity).apply {
                         setTitle("Success")
                         setMessage(response.message ?: "Registration successful!")
                         setPositiveButton("OK") { _, _ ->
-                                // Navigasi ke halaman login
+
                             navigateToLogin()
                         }
                         create().show()
                     }
                 } catch (e: Exception) {
-                    Log.e("RegisterActivity", "Registration failed: ${e.message}")
                     showToast("Registration failed: ${e.message}")
                 }
             }
@@ -99,20 +87,20 @@ class RegisterActivity : AppCompatActivity() {
     private fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
-        finish() // Tutup halaman RegisterActivity agar tidak kembali ke sini
+        finish()
     }
 
     private fun navigateToBack() {
         val intent = Intent(this, WelcomeActivity::class.java)
         startActivity(intent)
-        finish() // Tutup halaman RegisterActivity agar tidak kembali ke sini
+        finish()
     }
 
     private fun setupBackButton() {
         val backButton = findViewById<LinearLayout>(R.id.backButtonLayout)
 
         backButton.setOnClickListener {
-            // Panggil fungsi untuk kembali ke halaman login
+
             navigateToBack()
         }
     }

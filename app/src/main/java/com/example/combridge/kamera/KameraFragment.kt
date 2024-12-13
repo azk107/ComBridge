@@ -23,5 +23,12 @@ class KameraFragment : Fragment(R.layout.fragment_kamera) {
             val intent = Intent(requireActivity(), BangunKataActivity::class.java)
             startActivity(intent)
         }
+
+        val btnGaleri = view.findViewById<Button>(R.id.Galeri)
+        btnGaleri.setOnClickListener {
+
+            val intent = Intent(requireActivity(), GaleriActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

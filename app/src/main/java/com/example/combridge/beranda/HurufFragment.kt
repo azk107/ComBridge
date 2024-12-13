@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.combridge.R
@@ -17,20 +18,20 @@ class FragmentHuruf : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate layout FragmentHuruf
         val view = inflater.inflate(R.layout.fragment_huruf, container, false)
-
-        // Setup RecyclerView
         val rvHuruf = view.findViewById<RecyclerView>(R.id.rv_huruf)
         rvHuruf.layoutManager = GridLayoutManager(context, 2)
         val adapter = HurufAdapter(getHurufList())
         rvHuruf.adapter = adapter
 
-        // Set item click listener
         adapter.setOnItemClickListener { huruf ->
             onHurufClick(huruf)
         }
 
+        val btnClose = view.findViewById<ImageView>(R.id.btnClose)
+        btnClose.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
         return view
     }
@@ -40,7 +41,6 @@ class FragmentHuruf : Fragment() {
     }
 
     private fun onHurufClick(huruf: String) {
-        // Map untuk menyimpan URL berdasarkan huruf
         val hurufToImageUrl = mapOf(
             "A" to "https://storage.googleapis.com/sign-model-bucket/images/valid/A/body%20white%20(3).jpg",
             "B" to "https://storage.googleapis.com/sign-model-bucket/images/valid/B/body%20white%20(3).jpg",
@@ -70,17 +70,14 @@ class FragmentHuruf : Fragment() {
             "Z" to "https://storage.googleapis.com/sign-model-bucket/images/valid/Z/body%20white%20(3).jpg"
         )
 
-        // Cek apakah huruf ada di dalam map dan dapatkan URL-nya
         val imageUrl = hurufToImageUrl[huruf]
 
         if (imageUrl != null) {
-            // Jika URL ditemukan, buat intent untuk menampilkan gambar
             val intent = Intent(context, ImageDisplayActivity::class.java).apply {
                 putExtra("image_url", imageUrl)
             }
             startActivity(intent)
         } else {
-            // Jika huruf tidak ditemukan, bisa ditambahkan penanganan lain jika diperlukan
         }
     }
 

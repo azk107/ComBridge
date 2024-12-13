@@ -27,18 +27,16 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
-    // Fungsi untuk menghapus data pengguna
     suspend fun clearUserData() {
         dataStore.edit { preferences ->
-            preferences.clear() // Menghapus semua data yang ada
+            preferences.clear()
         }
     }
 
-    val token: Flow<String?>
-        get() = dataStore.data.map { preferences ->
-            preferences[KEY_TOKEN]
-        }
-
+//    val token: Flow<String?>
+//        get() = dataStore.data.map { preferences ->
+//            preferences[KEY_TOKEN]
+//        }
 
     companion object {
         @Volatile

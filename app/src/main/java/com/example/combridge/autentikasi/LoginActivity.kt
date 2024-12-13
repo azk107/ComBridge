@@ -27,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Menggunakan View Binding
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -45,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Memanggil login API
             lifecycleScope.launch {
                 try {
                     val response = UserRepository.getInstance(
@@ -54,7 +52,6 @@ class LoginActivity : AppCompatActivity() {
                     ).login(email, password)
 
                     if (!response.error) {
-                        // Simpan token jika ada
                         response.token?.let { token ->
                             val userPref = UserPreference.getInstance(applicationContext.dataStore)
                             userPref.saveToken(token)
@@ -68,7 +65,6 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Login gagal: ${response.message}", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
-                    Log.e("LoginActivity", "Login failed: ${e.message}")
                     Toast.makeText(this@LoginActivity, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -85,7 +81,6 @@ class LoginActivity : AppCompatActivity() {
         val backButton = findViewById<LinearLayout>(R.id.backButtonLayout)
 
         backButton.setOnClickListener {
-            // Panggil fungsi untuk kembali ke halaman Welcome
             navigateToBack()
         }
     }

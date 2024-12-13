@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHeight_percent="0.6" />
 
-    <!-- Background atas biru -->
     <LinearLayout
         android:id="@+id/topBackground"
         android:layout_width="0dp"
@@ -26,7 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Judul ComBridge -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -37,7 +35,6 @@
             android:fontFamily="@font/poppins_medium"
             android:textColor="#000000" />
 
-        <!-- Baris Back -->
         <LinearLayout
             android:id="@+id/backButtonLayout"
             android:layout_width="wrap_content"
@@ -45,7 +42,6 @@
             android:orientation="horizontal"
             android:layout_marginTop="14dp">
 
-            <!-- Tombol Back -->
             <ImageView
                 android:id="@+id/btnBack"
                 android:layout_width="24dp"
@@ -53,7 +49,6 @@
                 android:src="@drawable/ic_back"
                 android:contentDescription="Back" />
 
-            <!-- Text Back -->
             <TextView
                 android:id="@+id/tvBack"
                 android:layout_width="wrap_content"
@@ -64,11 +59,8 @@
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins_medium"/>
         </LinearLayout>
-
-
     </LinearLayout>
 
-    <!-- Konten bagian putih -->
     <LinearLayout
         android:id="@+id/contentWhite"
         android:layout_width="340dp"
@@ -82,7 +74,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Judul Welcome -->
         <TextView
             android:id="@+id/tvWelcome"
             android:layout_width="wrap_content"
@@ -95,8 +86,6 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_medium"/>
 
-
-        <!-- Input Email -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailEditTextLayout"
             android:layout_width="match_parent"
@@ -117,7 +106,6 @@
                 android:fontFamily="@font/poppins_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Input Password -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordEditTextLayout"
             android:layout_width="match_parent"
@@ -138,7 +126,6 @@
                 android:fontFamily="@font/poppins_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Tombol Sign Up -->
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
@@ -151,7 +138,6 @@
             android:fontFamily="@font/poppins_medium"/>
     </LinearLayout>
 
-    <!-- Rectangle di bawah -->
     <View
         android:id="@+id/bottomRectangle"
         android:layout_width="0dp"

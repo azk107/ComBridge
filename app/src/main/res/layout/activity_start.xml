@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Bagian Header -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -40,7 +38,6 @@
             android:layout_marginTop="8dp" />
     </LinearLayout>
 
-    <!-- Background Lengkung -->
     <View
         android:id="@+id/curved_background_view"
         android:layout_width="match_parent"
@@ -49,7 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.4" />
 
-    <!-- Gambar Ilustrasi -->
     <ImageView
         android:id="@+id/iv_illustration"
         android:layout_width="200dp"
@@ -61,7 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Get Started -->
     <Button
         android:id="@+id/btn_get_started"
         android:layout_width="200dp"

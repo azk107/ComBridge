@@ -19,7 +19,7 @@ class HurufAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HurufViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_huruf, parent, false)
-        return HurufViewHolder(view, listener)  // Pass listener to ViewHolder
+        return HurufViewHolder(view, listener)
     }
 
     override fun onBindViewHolder(holder: HurufViewHolder, position: Int) {
@@ -40,4 +40,3 @@ class HurufAdapter(
         }
     }
 }
-

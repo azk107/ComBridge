@@ -13,10 +13,8 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
-        // Referensi LinearLayout untuk menampung daftar developer
         val developerList: LinearLayout = findViewById(R.id.developer_list)
 
-        // Daftar Developer
         val developers = listOf(
             Developer("Hendri Yunus Wijaya", R.drawable.dev1),
             Developer("Fajar Aulia", R.drawable.dev2),
@@ -27,18 +25,15 @@ class AboutActivity : AppCompatActivity() {
             Developer("Muhammad Azimi", R.drawable.dev7)
         )
 
-        // Tambahkan item developer secara dinamis ke dalam developer_list
         for (developer in developers) {
             val developerView = LayoutInflater.from(this).inflate(R.layout.item_developer, developerList, false)
 
-            // Set gambar dan nama developer
             val developerImage = developerView.findViewById<ImageView>(R.id.developer_image)
             val developerName = developerView.findViewById<TextView>(R.id.developer_name)
 
             developerImage.setImageResource(developer.imageRes)
             developerName.text = developer.name
 
-            // Tambahkan item ke layout
             developerList.addView(developerView)
         }
     }

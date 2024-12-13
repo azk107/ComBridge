@@ -15,7 +15,6 @@
         android:padding="16dp"
         android:gravity="center">
 
-        <!-- Text untuk Huruf -->
         <TextView
             android:id="@+id/tv_detail_kata"
             android:layout_width="wrap_content"
@@ -27,7 +26,6 @@
             android:textColor="@android:color/black"
             android:fontFamily="@font/poppins_medium"/>
 
-        <!-- Label Huruf -->
         <TextView
             android:id="@+id/tv_keterangan"
             android:layout_width="wrap_content"
@@ -38,6 +36,5 @@
             android:gravity="center"
             android:textColor="@android:color/darker_gray"
             android:fontFamily="@font/poppins_medium"/>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -6,7 +6,6 @@
     android:padding="8dp"
     android:gravity="center_vertical">
 
-    <!-- Foto Developer -->
     <ImageView
         android:id="@+id/developer_image"
         android:layout_width="64dp"
@@ -17,7 +16,6 @@
         android:scaleType="centerCrop"
         android:background="@drawable/circle_background" />
 
-    <!-- Nama Developer -->
     <TextView
         android:id="@+id/developer_name"
         android:layout_width="wrap_content"

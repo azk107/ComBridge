@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
             android:background="#6AA4F1"
             android:padding="16dp">
 
-            <!-- Judul -->
             <TextView
                 android:id="@+id/appTitle"
                 android:layout_width="wrap_content"
@@ -29,7 +27,6 @@
                 android:textColor="#000000"
                 android:fontFamily="@font/poppins_medium" />
 
-            <!-- Profil -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,14 +69,12 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Informasi -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:showDividers="middle">
 
-            <!-- About -->
             <LinearLayout
                 android:id="@+id/aboutButton"
                 android:layout_width="match_parent"
@@ -116,7 +111,6 @@
 <!--                android:textSize="16sp"-->
 <!--                android:textColor="@android:color/black" />-->
 
-            <!-- Logout -->
             <LinearLayout
                 android:id="@+id/logoutButton"
                 android:layout_width="match_parent"

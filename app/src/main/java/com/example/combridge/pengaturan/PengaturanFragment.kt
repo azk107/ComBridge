@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 class PengaturanFragment : Fragment() {
 
     private lateinit var logoutButton: LinearLayout
-    private lateinit var aboutButton: LinearLayout // Tambahkan referensi untuk tombol "About"
+    private lateinit var aboutButton: LinearLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

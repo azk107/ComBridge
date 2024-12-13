@@ -11,13 +11,10 @@ class UserRepository private constructor(
     private val apiService: ApiService
 ) {
 
-    //    Menyimpan sesi pengguna
-    suspend fun saveSession(user: UserModel) {
-        userPreference.saveSession(user)
-    }
+//    suspend fun saveSession(user: UserModel) {
+//        userPreference.saveSession(user)
+//    }
 
-
-    //    Register pengguna
     suspend fun register(name: String, email: String, password: String): RegisterResponse {
         return try {
             val registerRequest = RegisterRequest(name, email, password)
@@ -35,7 +32,6 @@ class UserRepository private constructor(
             throw Exception("Login failed: ${e.message}")
         }
     }
-
 
     companion object {
         @Volatile

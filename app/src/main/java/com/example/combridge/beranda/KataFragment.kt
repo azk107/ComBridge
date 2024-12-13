@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.combridge.R
@@ -13,32 +14,27 @@ import com.example.combridge.adapter.KataAdapter
 
 class KataFragment : Fragment() {
 
-//    private lateinit var interpreter: Interpreter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate layout fragment_kata.xml
         val view = inflater.inflate(R.layout.fragment_kata, container, false)
-
-        // Setup RecyclerView
         val rvKata = view.findViewById<RecyclerView>(R.id.rv_kata)
         rvKata.layoutManager = GridLayoutManager(context, 2)
-
         val adapter = KataAdapter(getKataList())
         rvKata.adapter = adapter
-
-        // Set item click listener
         adapter.setOnItemClickListener { kata ->
             onKataClick(kata)
+        }
+
+        val btnClose = view.findViewById<ImageView>(R.id.btnClose)
+        btnClose.setOnClickListener {
+            activity?.onBackPressed()
         }
 
 
         return view
     }
-
-    // Menyesuaikan dengan daftar kata
     private fun getKataList(): List<String> {
         return listOf(
             "Berdoa", "Berhenti", "Berjalan", "Bermain", "Berpikir",
@@ -49,7 +45,6 @@ class KataFragment : Fragment() {
     }
 
     private fun onKataClick(kata: String) {
-        // Map untuk menyimpan URL berdasarkan huruf
         val kataToImageUrl = mapOf(
             "Berdoa" to "https://storage.googleapis.com/sign-model-bucket/images/valid/Berdoa/berdoa-0567ce8b-3137-11ef-9ab5-9a8ad2a22026.jpg",
             "Berhenti" to "https://storage.googleapis.com/sign-model-bucket/images/valid/berhenti/berhenti-18cd8545-36ba-11ef-881e-8d5308685961.jpg",
@@ -73,18 +68,14 @@ class KataFragment : Fragment() {
             "Memukul" to "https://storage.googleapis.com/sign-model-bucket/images/valid/Memukul/memukul-0bba3d9c-36bd-11ef-86ae-c85acfeebaf8.jpg"
         )
 
-        // Cek apakah huruf ada di dalam map dan dapatkan URL-nya
         val imageUrl = kataToImageUrl[kata]
 
         if (imageUrl != null) {
-            // Jika URL ditemukan, buat intent untuk menampilkan gambar
             val intent = Intent(context, ImageDisplayActivity::class.java).apply {
                 putExtra("image_url", imageUrl)
             }
             startActivity(intent)
         } else {
-            // Jika huruf tidak ditemukan, bisa ditambahkan penanganan lain jika diperlukan
         }
     }
-
 }

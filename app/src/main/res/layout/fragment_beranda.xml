@@ -8,7 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".beranda.BerandaFragment">
 
-    <!-- Bagian Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +46,6 @@
             android:fontFamily="@font/poppins_medium" />
     </LinearLayout>
 
-    <!-- Bagian Menu -->
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +54,6 @@
         android:padding="20dp"
         android:layout_gravity="center">
 
-        <!-- Tombol Huruf -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +62,6 @@
             android:layout_margin="8dp"
             android:layout_gravity="start|center_vertical">
 
-            <!-- Latar Belakang Persegi -->
             <FrameLayout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -73,7 +69,6 @@
                 android:elevation="4dp"
                 android:clipToPadding="false">
 
-                <!-- Ikon -->
                 <ImageView
                     android:id="@+id/iconHuruf"
                     android:layout_width="70dp"
@@ -82,7 +77,6 @@
                     android:layout_gravity="center" />
             </FrameLayout>
 
-            <!-- Label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,9 +159,17 @@
         </LinearLayout>
     </GridLayout>
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerSlider"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        tools:itemCount="3" />
+
+
 </LinearLayout>
