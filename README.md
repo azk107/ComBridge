@@ -11,3 +11,6 @@
 - **Precision**: 0.99
 - **Recall**: 0.99
 - **F1-Score**: 0.99
+
+### Model
+You download our team's Model [here]([https://youtu.be/_K_aPI2N5CI](https://drive.google.com/drive/folders/1NwvNd5u6mw55A_P3LXtYtFAOx-IOAFrv?usp=sharing))
