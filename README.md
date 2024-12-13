@@ -43,6 +43,9 @@ You can see our application demo [here](link youtube)
 ### Presentation
 You can watch our team's presentation video and slide [here](link youtube)
 
+### Provided Downloadable APK 
+You can download the application of ComBridge here [here](https://drive.google.com/drive/folders/1qCJrXjdG6YkdEyjqOl_eNkA2GkT83WyA?usp=sharing)
+
 ## Repository
 Access our project's code, data, and documentation through this link:
 | Path                | Repository Link                                               |
